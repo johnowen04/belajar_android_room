@@ -3,10 +3,8 @@ package com.example.belajarandroidroom.viewmodel
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
-import androidx.room.Room
-import com.example.belajarandroidroom.buildDB
+import com.example.belajarandroidroom.util.buildDB
 import com.example.belajarandroidroom.model.Todo
-import com.example.belajarandroidroom.model.TodoDatabase
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job

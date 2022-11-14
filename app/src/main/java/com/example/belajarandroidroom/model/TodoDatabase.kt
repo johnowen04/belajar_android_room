@@ -2,11 +2,10 @@ package com.example.belajarandroidroom.model
 
 import android.content.Context
 import androidx.room.Database
-import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.example.belajarandroidroom.buildDB
+import com.example.belajarandroidroom.util.buildDB
 
-@Database(entities = arrayOf(Todo::class), version = 1)
+@Database(entities = arrayOf(Todo::class), version = 2)
 abstract class TodoDatabase: RoomDatabase() {
     abstract fun todoDao(): TodoDao
 
