@@ -8,7 +8,10 @@ import com.example.belajarandroidroom.R
 import com.example.belajarandroidroom.model.Todo
 import kotlinx.android.synthetic.main.todo_item_layout.view.*
 
-class TodoListAdapter(val todoList: ArrayList<Todo>): RecyclerView.Adapter<TodoListAdapter.TodoViewHolder>() {
+class TodoListAdapter(
+    val todoList: ArrayList<Todo>,
+    val adapterOnClick: (Todo) -> Unit
+): RecyclerView.Adapter<TodoListAdapter.TodoViewHolder>() {
 
     class TodoViewHolder(var view: View): RecyclerView.ViewHolder(view)
 
@@ -24,6 +27,9 @@ class TodoListAdapter(val todoList: ArrayList<Todo>): RecyclerView.Adapter<TodoL
 
         with(holder.view) {
             this.checkBox.text = todo.title
+            this.checkBox.setOnCheckedChangeListener{ _, b ->
+                if (b) adapterOnClick(todo)
+            }
         }
     }
 

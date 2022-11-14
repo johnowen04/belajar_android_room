@@ -9,6 +9,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.belajarandroidroom.R
+import com.example.belajarandroidroom.model.Todo
 import com.example.belajarandroidroom.viewmodel.TodoListViewModel
 import kotlinx.android.synthetic.main.fragment_todo_list.*
 
@@ -31,7 +32,7 @@ class TodoListFragment : Fragment() {
         viewModel = ViewModelProvider(this).get(TodoListViewModel::class.java)
         viewModel.refresh()
 
-        adapter = TodoListAdapter(arrayListOf())
+        adapter = TodoListAdapter(arrayListOf()) { viewModel.clearTask(it) }
         recTodo.layoutManager = LinearLayoutManager(context)
         recTodo.adapter = adapter
 
