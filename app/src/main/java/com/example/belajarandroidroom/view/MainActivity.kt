@@ -3,8 +3,7 @@ package com.example.belajarandroidroom.view
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.navigation.NavController
-import androidx.navigation.Navigation
-import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import com.example.belajarandroidroom.R
 
@@ -15,7 +14,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        navController = Navigation.findNavController(this, R.id.fragmentHost)
+        navController = (supportFragmentManager.findFragmentById(R.id.fragmentHost) as NavHostFragment).navController
         NavigationUI.setupActionBarWithNavController(this, navController)
     }
 
