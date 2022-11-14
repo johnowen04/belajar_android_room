@@ -5,6 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.RadioButton
+import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import com.example.belajarandroidroom.R
 import com.example.belajarandroidroom.viewmodel.DetailTodoViewModel
@@ -32,6 +34,18 @@ class EditTodoFragment : Fragment() {
         viewModel = ViewModelProvider(this).get(DetailTodoViewModel::class.java)
         viewModel.fetch(uuid)
 
+        btnAddNotes.setOnClickListener {
+            val radio = view.findViewById<RadioButton>(radioGroupPriority.checkedRadioButtonId)
+            viewModel.updateTodo(
+                editTitle.text.toString(),
+                editNotes.text.toString(),
+                radio.tag.toString().toInt(),
+                uuid
+            )
+
+            Toast.makeText(view.context, "Data updated", Toast.LENGTH_SHORT).show()
+        }
+
         observeViewModel()
     }
 
@@ -39,6 +53,12 @@ class EditTodoFragment : Fragment() {
         viewModel.todoLiveData.observe(viewLifecycleOwner) {
             editTitle.setText(it.title)
             editNotes.setText(it.notes)
+
+            when (it.priority) {
+                3 -> radioHigh.isChecked = true
+                2 -> radioMedium.isChecked = true
+                else -> radioLow.isChecked = true
+            }
         }
     }
 }
