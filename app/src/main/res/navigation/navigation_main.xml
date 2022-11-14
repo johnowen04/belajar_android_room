@@ -15,6 +15,11 @@
             app:destination="@id/createTodoFragment"
             app:enterAnim="@android:anim/fade_in"
             app:exitAnim="@android:anim/fade_out" />
+        <action
+            android:id="@+id/actionEditTodoFragment"
+            app:destination="@id/editTodoFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out" />
     </fragment>
     <fragment
         android:id="@+id/createTodoFragment"
@@ -24,5 +29,13 @@
         <action
             android:id="@+id/actionTodoListFragment"
             app:destination="@id/todoListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/editTodoFragment"
+        android:name="com.example.belajarandroidroom.view.EditTodoFragment"
+        android:label="EditTodoFragment" >
+        <argument
+            android:name="uuid"
+            app:argType="integer" />
     </fragment>
 </navigation>

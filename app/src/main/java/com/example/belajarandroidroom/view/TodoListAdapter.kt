@@ -3,6 +3,7 @@ package com.example.belajarandroidroom.view
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.example.belajarandroidroom.R
 import com.example.belajarandroidroom.model.Todo
@@ -26,9 +27,14 @@ class TodoListAdapter(
         val todo = todoList[position]
 
         with(holder.view) {
-            this.checkBox.text = todo.title
-            this.checkBox.setOnCheckedChangeListener{ _, b ->
+            checkBox.text = todo.title
+            checkBox.setOnCheckedChangeListener{ _, b ->
                 if (b) adapterOnClick(todo)
+            }
+
+            imgButtonEdit.setOnClickListener {
+                val action = TodoListFragmentDirections.actionEditTodoFragment(todo.uuid)
+                Navigation.findNavController(it).navigate(action)
             }
         }
     }
