@@ -14,5 +14,5 @@ interface TodoDao {
     suspend fun selectTodo(id: Int): Todo
 
     @Delete
-    suspend fun deleteTodo(id: Int)
+    suspend fun deleteTodo(todo: Todo)
 }
