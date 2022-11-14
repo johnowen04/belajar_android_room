@@ -1,7 +1,8 @@
-package com.example.belajarandroidroom
+package com.example.belajarandroidroom.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.belajarandroidroom.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
