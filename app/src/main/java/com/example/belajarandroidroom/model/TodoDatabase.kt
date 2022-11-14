@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.example.belajarandroidroom.buildDB
 
 @Database(entities = arrayOf(Todo::class), version = 1)
 abstract class TodoDatabase: RoomDatabase() {
@@ -14,10 +15,7 @@ abstract class TodoDatabase: RoomDatabase() {
         private val LOCK = Any()
 
         private fun buildDatabase(context: Context) =
-            Room.databaseBuilder(context.applicationContext,
-                TodoDatabase::class.java,
-                "newtododb"
-            ).build()
+            buildDB(context)
 
         operator fun invoke(context: Context) {
             if (instance != null) {

@@ -3,6 +3,7 @@ package com.example.belajarandroidroom.viewmodel
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.room.Room
+import com.example.belajarandroidroom.buildDB
 import com.example.belajarandroidroom.model.Todo
 import com.example.belajarandroidroom.model.TodoDatabase
 import kotlinx.coroutines.CoroutineScope
@@ -19,11 +20,7 @@ class DetailTodoViewModel(application: Application): AndroidViewModel(applicatio
 
     fun addTodo(list: List<Todo>) {
         launch {
-            val db = Room.databaseBuilder(
-                getApplication(),
-                TodoDatabase::class.java,
-                "newtododb"
-            ).build()
+            val db = buildDB(getApplication())
 
             db.todoDao().insertAll(*list.toTypedArray())
         }
