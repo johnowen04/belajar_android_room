@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.RadioButton
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
 import com.example.belajarandroidroom.R
 import com.example.belajarandroidroom.viewmodel.DetailTodoViewModel
 import kotlinx.android.synthetic.main.fragment_create_todo.*
@@ -44,6 +45,7 @@ class EditTodoFragment : Fragment() {
             )
 
             Toast.makeText(view.context, "Data updated", Toast.LENGTH_SHORT).show()
+            Navigation.findNavController(it).popBackStack()
         }
 
         observeViewModel()
